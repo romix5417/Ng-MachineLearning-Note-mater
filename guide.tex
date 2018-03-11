@@ -1,0 +1,51 @@
+%!TEX program = xelatex
+\documentclass[color=green,mathpazo,titlestyle=hang,11pt]{elegantbook}
+
+\author{LMin}
+\email{luomin5417@gmail.com}
+\zhtitle{机器学习}
+\zhend{笔记}
+\entitle{Machine Learning}
+\enend{Note}
+\version{1.0}
+\myquote{There is no good end for the fuck thieves country.}
+\logo{logo.pdf}
+\cover{cover.pdf}
+
+%green color
+   \definecolor{main1}{RGB}{0,120,2}
+   \definecolor{seco1}{RGB}{230,90,7}
+   \definecolor{thid1}{RGB}{0,160,152}
+%cyan color
+   \definecolor{main2}{RGB}{0,175,152}
+   \definecolor{seco2}{RGB}{239,126,30}
+   \definecolor{thid2}{RGB}{120,8,13}
+%blue color
+   \definecolor{main3}{RGB}{20,50,104}
+   \definecolor{seco3}{RGB}{180,50,131}
+   \definecolor{thid3}{RGB}{7,127,128}
+
+\usepackage{makecell}
+\usepackage{lipsum}
+\usepackage{texnames}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\mainmatter
+
+\input{chapter/chapter01}
+\input{chapter/chapter02}
+\input{chapter/chapter03}
+\input{chapter/chapter04}
+\input{chapter/chapter05}
+\input{chapter/chapter06}
+\input{chapter/chapter07}
+\input{chapter/chapter08}
+
+\bibliographystyle{ieeetr}
+\bibliography{reference}
+\addcontentsline{toc}{chapter}{参考文献}
+
+\end{document}

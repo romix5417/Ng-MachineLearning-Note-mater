@@ -1,0 +1,124 @@
+\chapter{线性回归回顾}
+
+\begin{center}
+为往圣继绝学，为万世开太平！
+\end{center}
+
+\begin{flushright}
+---张载  
+\end{flushright}
+
+\section{矩阵和向量}
+\lipsum[3]
+考虑如下的随机动态规划问题
+\begin{align*}
+&\max(\min)\quad \mathbb{E}\int_{t_0}^{t_1}f(t,x,u)\,dt\\
+&\quad\mbox{s.t.} \quad dx=g(t,x,u)dt+\sigma(t,x,u)dz\\
+&\quad \hspace{2.em} k(0)=k_0\;\text{given}
+\end{align*}
+
+where $z$ is stochastic process or white noise or wiener process.
+
+\begin{newdef}[Wiener Process]
+If $z$ is wiener process, then for any partition $t_0,t_1,t_2,\ldots$ of time interval, the random variables $z(t_1)-z(t_0),z(t_2)-z(t_1),\ldots$ are independently and normally distributed with zero means and variance $t_1-t_0,t_2-t_1,\ldots$
+\end{newdef}
+
+\lipsum[5]
+
+\begin{example}
+$E$ and $F$ be two events such that $\mbf{P}(E)=\mbf{P}(F)=1/2$, and $\mbf{P}(E\cap F)=1/3$, let $\mathscr{F}=\sigma(Y)$,  $X$ and $Y$ be the indicate function of $E$ and $F$ respectively. How to compute $\mathbb{E}[ X\mid \mathscr{F} ]$?
+\end{example}
+\lipsum[4]
+\begin{exercise}
+let $S=l^\infty=\big\{(x_n)\mid \exists\, M \text{ such that } \forall n, |x_n|\leq M,x_n\in \mathbb{R}\big\}$, $\rho_{\infty}(x,y)=\sup\limits_{n\geq 1}|x_n-y_n|$, show that $\big(l^\infty,\rho_{\infty}\big)$ is complete.
+\end{exercise}
+
+\begin{newthem}[勾股定理]
+勾股定理的数学表达（Expression）为
+\[a^2+b^2=c^2\]
+其中$a,b$为直角三角形的两条直角边长，$c$为直角三角形斜边长。
+\end{newthem}
+
+\begin{note}
+在本模板中，引理（lemma），推论（corollary ）的样式和定理的样式一致，包括颜色，仅仅只有计数器的设置不一样。在这个例稿中，我们将不给出引理推论的例子。
+\end{note}
+
+
+\lipsum[4]
+
+\begin{newprop}[最优性原理]
+如果$u^*$在$[s,T]$上为最优解，则$u^*$在$[s,T]$任意子区间都是最优解，假设区间为$[t_0,t_1]$的最优解为$u^*$，则$u(t_0)=u^{*}(t_0)$，即初始条件必须还是在$u^*$上。
+\end{newprop}
+
+\lipsum[5-6]
+\begin{newcorol}
+假设$V(\cdot,\cdot)$为值函数，则跟据最大值原理，有如下推论
+\[
+V(k,z)=\max\Big\{u\big(zf(k)-y\big)+\beta \mathbb{E}V(y,z^\prime)\Big\}
+\]
+\end{newcorol}
+
+\begin{newproof}
+因为 $y^*=\alpha\beta z k^\alpha$，$V(k,z)=\alpha/1-\alpha\beta\ln k_0+1/1-\alpha\beta \ln z_0+\Delta$。
+\begin{align*}
+\text{右边}&=\Big\{u\big(zf(k)-y\big)+\beta \mathbb{E}V(y,z^\prime)\Big\}\\
+&=\ln(zk^\alpha-\alpha\beta zk^\alpha)+\beta\mathbb{E}\Big[\frac{\alpha}{1-\alpha\beta}\ln y+\frac{1}{1-\alpha\beta}\ln z^\prime+\Delta\Big]\\
+&=\ln(1-\alpha\beta)zk^\alpha+\beta\Big\{\mathbb{E}\big[\frac{\alpha}{1-\alpha\beta}\ln \alpha\beta z k^\alpha\big]+\frac{1}{1-\alpha\beta}\mathbb{E}[\ln z^\prime]+\Delta\Big\}
+\end{align*}
+利用$\mathbb{E}[\ln z^\prime]=0$，并将对数展开得
+\begin{align*}
+\text{右边}&=\ln (1-\alpha\beta)+\ln z+\alpha\ln k+\frac{\alpha\beta}{1-\alpha\beta}\big[\ln \alpha\beta+\ln z+\alpha\ln k\big]+\frac{\beta}{1-\alpha\beta}\mu+\beta \Delta\\
+&=\frac{\alpha}{1-\alpha\beta}\ln k+\frac{1}{1-\alpha\beta}\ln z+\Delta
+\end{align*}
+所以$\text{左边}=\text{右边}$，证毕。
+\end{newproof}
+
+
+
+\begin{property}
+Properties of Cauchy Sequence
+\begin{enumerate}\parskip=0pt \itemsep=0pt
+\item $\{x_k\}$ is cauchy sequence then $\{x_k^i\}$ is cauchy sequence.
+\item $x_k\in \mathbb{R}^n$, $\rho(x,y)$ is Euclidean, then cauchy is equivalent to convergent, $(\mathbb{R}^n,\rho)$ metric space is complete.
+\end{enumerate}
+\end{property}
+
+
+\lipsum[7]
+
+\begin{custom}{Application}
+This is one example of the custom environment, the key word is given by the option of custom environment.
+\end{custom}
+
+
+\lipsum[6]
+\begin{newdef}[Contraction mapping]
+$(S,\rho)$ is the metric space, $T: S\to S$, If there exists $\alpha\in(0,1)$ such that for any $x$ and $y\in S$, the distance
+\begin{equation}
+\rho(Tx,Ty)\leq \alpha\rho(x,y)
+\end{equation}
+Then $T$ is a {\color{main} contraction mapping}.
+\end{newdef}
+
+\begin{remark}
+\begin{enumerate}
+\parskip=0pt \itemsep=0pt
+\item $T:S\to S$, where $S$ is a metric space, if  for any $x,y\in S$, $\rho(Tx,Ty)<\rho(x,y)$ is not contraction mapping.
+\item Contraction mapping is continuous map.
+\end{enumerate}
+\end{remark}
+
+
+\begin{conclusion}
+看到一则小幽默，是这样说的：{\color{main} 别人都关心你飞的有多高，只有我关心你的翅膀好不好吃！}说多了都是泪啊！
+\end{conclusion}
+
+\section{加法和标量乘法}
+
+\section{矩阵向量乘法}
+
+\section{矩阵乘法}
+
+\section{矩阵乘法特征}
+
+\section{逆和转制}

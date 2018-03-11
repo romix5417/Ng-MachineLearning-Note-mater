@@ -1,0 +1,96 @@
+\chapter{单变量线性回归}
+
+\begin{flushleft}
+故不登高山，不知天之高也；不临深溪，不知地之厚也;不闻先王之遗言，不知学问之大也。
+\end{flushleft}
+
+\begin{flushright}
+---荀子   
+\end{flushright}
+
+\section{模型描述}
+ 我们目前都是学生，接触 \LaTeX{} 的时间也不是很长，因此，对于此模板的错误还请多多包涵！ 目前，模板的拓展性或者可移植性有待完善，所以，我们强烈建议用户不要大幅修改模板文件，我们的初衷是提供一套模板，让初学者能够使用一些比较美观，优雅的模板。如果在使用过程中，想修改一些简单的东西需要帮忙，请联系我们，我们的邮箱是：\href{elegantlatex2e@gmail.com}{elegantlatex2e@gmail.com}。我们将竭尽全力提供帮助！
+
+值此版本发行之际，我们 Elegant\LaTeX{} 项目组向大家重新介绍一下我们的工作，我们的主页是 \href{http://elegantlatex.tk}{http://elegantlatex.tk}，我们这个项目致力于打造一系列美观、优雅、简便的模板方便使用者记录学习历史。其中目前在实施或者在规划中的子项目有 书籍模板ElegantBook、笔记模板ElegantNote、幻灯片模板 ElegantSlide。这些子项目的名词是一体的，请在使用这些名词的时候不要将其断开（如 Elegant Note是不正确的写法）。并且，Elegant\LaTeX{}  Book 指的即是 ElegantBook。
+
+\section{代价函数}
+
+基于本模板追求视觉上的美观的角度，强烈建议使用者安装./fonts/文件夹下的字体。出于版权的考虑，务必不能将此模板用于涉及盈利目的的商业行为，否则，后果自负，本模板带的字体仅供学习使用，如果您喜欢某种字体，请自行购买正版。本文主要使用的字体如下
+\begin{itemize}
+\itemsep=3pt
+\parskip=0pt
+\item Adobe Garamond Pro
+\item Minion Pro \& Myriad Pro  \& Inconsolata
+\item 方正字体
+\item 华文中宋
+\end{itemize}
+
+\begin{note}
+中文正文使用了华文中宋，Minion Pro为英文衬线字体（\verb|\rmfamily|），Myriad Pro为英文非衬线字体（\verb|\sffamily|），Inconsolata 为英文打字机字体（\verb|\ttfamily|）。
+
+并且，如果系统内安装了Adobe 字体，大家可以把模板中使用到的黑体，楷体，宋体等字替换成 Adobe 字体，这样可以达到最佳效果。
+\end{note}
+
+\section{代价函数(一)}
+\subsection{编译方式}
+本模板基于book文类，所以book的选项对于本模板也是有效的。但是，只支持 \XeLaTeX{}，编码为 UTF-8，推荐使用 \TeX{}live编译。作者编写环境为Win8.1(64bit)+\TeX{}live 2013，由于使用了参考文献，所以，编译顺序为\XeLaTeX->\BibTeX->\XeLaTeX->\XeLaTeX。
+
+本文特殊选项设置共有3类，分为{\color{main}颜色} 、{\color{main} 数学字体 }以及{\color{main} 章标题显示风格}。
+
+\subsection{选项设置}
+第一类为{\color{main}颜色}主题设置，内置 3 组颜色主题，分别为 \verb|green|（默认），\verb|cyan|，\verb|blue|，另外还有一个自定义的选项 \verb|nocolor|，用户\textbf{必须}在使用模板的时候选择某个颜色主题或选择 \verb|nocolor|选项。调用颜色主题 \verb|green| 的方法为\verb|\documentclass[green]{elegantbook}|或者使用\verb|\documentclass[color=green]{elegantbook}|。需要改变颜色的话请选择 \verb|nocolor|选项或者使用 \verb|color=none|，然后在导言区定义main、seco、thid颜色，具体的方法如下：
+\begin{verbatim}
+\definecolor{main}{RGB}{70,70,70}    %定义main颜色值
+\definecolor{seco}{RGB}{115,45,2}    %定义seco颜色值
+\definecolor{thid}{RGB}{0,80,80}     %定义thid颜色值
+\end{verbatim}
+
+第二类为{\color{main}数学字体}设置，有两个可选项，分别是 mathpazo（默认） 和 mtpro2 字体，调用mathpazo 字体使用 \verb|\documentclass[mathpazo]{elegantbook}|，调用 mtpro2 字体时需要把 \verb|mathpazo|换成 \verb|mtpro|，mathpazo 不需要用户自己安装字体，mtpro2 的字体需要自己安装。
+
+\begin{table}[htp]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+	  & green & cyan & blue & 主要使用的环境\\
+\midrule
+main & \makecell{{\color{main1}\rule{1cm}{1cm}}}& \makecell{{\color{main2}\rule{1cm}{1cm}}}&\makecell{ {\color{main3}\rule{1cm}{1cm}}}& newthem \ newlemma \ newcorol\\
+
+seco &\makecell{ {\color{seco1}\rule{1cm}{1cm}}}& \makecell{{\color{seco2}\rule{1cm}{1cm}}}&\makecell{ {\color{seco3}\rule{1cm}{1cm}}}&newdef\\
+
+thid &\makecell{ {\color{thid1}\rule{1cm}{1cm}}}& \makecell{{\color{thid2}\rule{1cm}{1cm}}}&\makecell{ {\color{thid3}\rule{1cm}{1cm}}}&newprop\\
+\bottomrule
+\end{tabular}
+\caption{ElegantBook 模板中的三套颜色主题\label{tab:color thm}}
+\end{table}
+
+第三类为{\color{main} 章标题显示风格}，包含 \verb|hang|（默认）与 \verb|display|两种风格，区别在于章标题单行显示（\verb|hang|）与双行显示（\verb|display|），本说明使用了 \verb|hang|。调用方式为 \verb|\documentclass[hang]{elegantbook}|或者 \verb|\documentclass[titlestyle=hang]{elegantbook}|。
+
+综合起来，同时调用三个选项使用 \verb|\documentclass[color=X,Y,titlestyle=Z]{elegantbook}|。其中 \verb|X| 可以选择 \verb|green|,\verb|cyan|,\verb|blue|,\verb|none|；\verb|Y| 可以选择 \verb|mathpazo|或者 \verb|mtpro|；\verb|Z|可以选择 \verb|hang| 或者 \verb|display|。
+
+\subsection{数学环境简介}
+在我们这个模板中，定义了三大类环境
+\begin{enumerate}
+\item 定理类环境，包含标题和内容两部分。根据格式的不同分为3种
+\begin{itemize}
+\item {\color{main} newthem、newlemma、newcorol} 环境，颜色为主颜色main，三者编号均以章节为单位；
+\item {\color{main} newdef} 环境，含有一个可选项，编号以章节为单位，颜色为seco；
+\item {\color{main} newprop} 环境，含有一个可选项，编号以章节为单位，颜色为thid。
+\end{itemize}
+\item 证明类环境，有  {\color{main} newproof、note、remark、solution} 环境，特点是，有引导符和引导词，并且 newproof、solution 环境有结束标志。
+\item 结论类环境，有 {\color{main}  conclusion、assumption、property} 环境，三者均以粗体的引导词为开头，和普通段落格式一致。
+\item 示例类环境--- {\color{main} example、exercise}环境，编号以章节为单位，其中exercise环境有引导符。
+\item 自定义环境--- {\color{main} custom}，带一个必选参数，格式与conclusion 环境很类似。
+\end{enumerate}
+
+\subsection{可编辑的字段}
+在模板中，可以编辑的字段分别为作者\verb|\author|、\verb|\email|、\verb|\zhtitle|、\verb|\zhend|、\verb|\entitle|、\verb|\enend|、\verb|\version|。并且，可以根据自己的喜好把封面水印效果的\verb|cover.pdf|替换掉，以及封面中用到的\verb|logo.pdf|。
+
+\section{代价函数(二)}
+
+\section{梯度下降}
+
+\section{梯度下降知识点总结}
+
+\section{线性回归的梯度下降}
+
+\section{本章课程总结}
