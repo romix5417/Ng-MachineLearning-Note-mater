@@ -9,37 +9,80 @@
 \end{flushright}
 
 \section{欢迎参加机器学习课程}
+机器学习是最激动人心的技术。在很多方面都使用了机器学习技术。机器学习主要的应用方向:
+\begin{itemize}
+\itemsep=3pt
+\parskip=0pt
+\item 数据挖掘
+\item 在无法手动编写的程序中的应用
+\item 在私人定制程序中的应用
+\end{itemize} 
 
-写 ElegantNote 模板的初衷是为了简化我在写笔记中的工作，因为我不会写类文件和包文件，所以，最当初是想拜托小L做出一个华丽，
-清爽的 \LaTeX{} 模板，最好是类文件，而且因为这样可以简化导言区复杂的内容。后来，和小L一拍即合，遂开始一起做Elegant\LaTeX{}的设计。
+\section{什么是机器学习}
 
-在学校的时候，搞定了定理环境样式的代码。因为不想重复 China\TeX{} 那个经典的页眉页脚，我找到了计量书上的一个图案，小L拿 Ti\emph{k}Z 一点一点把那个画出来了，不过我最后还是用的截取的方式得到的图案。慢慢地，我们把初步的样子做出来了。
+本节课程的主要内容有两个:
+\begin{enumerate}[1)]
+\item 机器学习的定义
+\begin{newdef}[Arthur Samuel]
+\large 在没有明确设置的情况下使计算机具有学习能力的研究领域。
+\end{newdef}
 
-2013年的暑假开始后，我对那个初步的模板做了一点改动，然后用它写了Dynamic Programing 的笔记，并且，在写的过程中，对模板加了封面，也就是模板现在的封面（logo 在Version 2.00中已经改了）。至此，模板的大致样子终于出来了，不过当时也在写笔记的过程中知道了某些不足，比如
-\begin{enumerate}
-\item 定理类的环境在我们这个模板中不能浮动，也不能跨页，在Version 2.00 版本中已经添加。
-\item 某些环境不足，比如例子、假设、性质、结论等环境，在1.00版本中已经增加了这几个环境，在2.00版本中，环境设置更加全面。
-\item 一些我们不可预知的错误将会不期而遇。
-\item 一些我们目前没有需求，但是可以继续改进的地方，比如表格样式，比如抄录样式等。
+\begin{newdef}[Tom Mitchell]
+\large 对于某类任务T和性能度量P，如果一个计算机程序在T上以P衡量的
+性能随着经验E而自我完善，那么我们称这个计算机程序在从经验E学习。\cite{MachineLearning}
+\end{newdef}
+\item 在什么情况下使用机器学习
+
+常用机器学习算法一般可以分为两类:
+\begin{itemize}
+\item 监督学习{\color{red} ---教会计算机做某件事情。}
+\item 无监督学习{\color{red} ---让计算机自己学习。}
+\end{itemize}
+
 \end{enumerate}
-
-写完那个笔记之后越发让我对 Elegant\LaTeX{} 模板的制作更有激情，在和小L相互讨论的几天里，我们终于得到了1.00 版本的 ElegantNote 模板。
-
-\section{什么是机器学习?}
-
-在实际应用中，我们发现了一个比较重要的问题，因为在一般的笔记中，定义、定理经常一起出现，和课本区别比较大的是，通常是一堆定义之后，出现一堆性质或者定理。如果出现这种情况，使用 ElegantNote 模板会导致分块很严重，影响排版质量和美观。思前想后，我们决定将 ElegantNote 模板更新为 ElegantBook 模板，并在未来重新设计一个简洁版本的 ElegantNote。 至此ElegantBook 才横空出世，由于更名原因，ElegantBook 1.00 版本也即原来的 ElegantNote， 而ElegantBook 2.00 为目前的正式版本。
 
 \section{监督学习}
 
-我以前从未写过类文件，所以，写这个模板的过程必然是折腾的过程，在写模板的过程中，最主要参考了《写给\LaTeXe{} 类与宏包的作者》\cite{packagewriter}、moderncv.cls 文件、\href{http://aff.whu.edu.cn/huangzh/}{武汉大学黄正华老师的论文模板}、《\LaTeXe{} 完全学习手册》\cite{complete}、{\itshape The Not So Short Introduction to \LaTeXe{}}\cite{oetiker2010not}以及各大\LaTeX{} 疑问解答网站，在此为无私奉献的组织和个人表示感谢！
-
-{\color{thid}忍不住插个图！}
+\subsection{回归问题}
+使用波特兰房屋价格的例子来说明监督学习,采集的数据如下图1.1所示，横轴表示的是平方英尺数，纵轴是不同房子的价格，单位是千美元。
 
 \begin{figure}[!hbtp]
-\includegraphics[width=0.8\textwidth]{happy.jpg}
-\caption{Happiness,we have it!\label{figur:happy}}
+\centering
+\includegraphics[width=0.8\textwidth]{room_price.png}
+\caption{Room Price\label{figur:root_price}}
 \end{figure}
 
-\section{无监督学习}
+假设你的朋友有一栋750平方英尺的房子,他想要卖掉房子，需要预测一下能够卖多少钱，此时学习算法能够有什么帮助呢？
+根据数据画一条直线，或者说一条直线拟合数据，如图1.2所示，由此看房子大约可以卖15万美元。
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{room_price_1.png}
+\caption{Room Price fitting straight\label{figur:root_price_1}}
+\end{figure}
 
+当然这并不是唯一能使用的学习算法，例如除了使用一条直线来拟合之外，还可以采用二阶函数或者二阶多项式来拟合，这样可能会更好，如图1.3
+所示，此时你再做预测，看上去房子可以卖出接近20万美元。
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=0.8\textwidth]{room_price_2.png}
+\caption{Room Price Second Derivative\label{figur:root_price_2}}
+\end{figure}
+
+而我们需要讨论的一件事就是如何选择如何决定，是采用直线来拟合数据，还是采用二阶函数来拟合，
+当然无论采用哪个模型都不会让你的朋友房子的价格卖的更好，但这是一个学习算法很好的例子，这
+是一个监督学习算法的例子。
+
+监督学习是指我们给算法一个数据集，其中包含了正确答案，也就是说我们给他一个房价数据集，在
+这个数据集中的每个样本，我们都给出正确的价格，即这个房子实际卖价，算法的目的就是给出更多
+的正确答案，例如为你朋友想要卖掉的这所新房子给出估价，用更专业的术语来说，它也被称为回归问题。
+这里的回归问题指的是我们想要预测连续的数值输出，也就是价格，技术上而言价格能够被圆整到分，
+因此是一个离散值，但通常我们认为房价是一个实数标量或是连续值，回归问题是我们设法预测连续值
+的属性。
+
+\subsection{分类问题}
+
+
+\section{无监督学习}
+无监督学习告诉你更多哦。
 \section{问题}
+学习之后就要思考问题。
